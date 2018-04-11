@@ -24,7 +24,7 @@ static NSString *segueCellIdentifier = @"segueCellIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Passing Data Between ViewControllers";
+    self.title = @"Passing Data";
     [self configTableView];
     [self configDataSource];
 }
@@ -38,8 +38,10 @@ static NSString *segueCellIdentifier = @"segueCellIdentifier";
 - (void)configDataSource {
     self.dataArray = @[
                        @[@"Passing Data Forward",
-                       @"Passing Data Back",
-                       @"Passing Data UserDefaults"],
+                         @"Passing Data Back",
+                         @"Passing Data UserDefaults",
+                         @"Passing Data Singleton",
+                         @"Passing Data Notification",],
                        
                        @[@"Passing Data Forward using Segues"]
                        ];

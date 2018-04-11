@@ -8,12 +8,17 @@
 
 #import "ViewControllerA.h"
 #import "ViewControllerB.h"
+#import "PassingDataManager.h"
 
 @interface ViewControllerA ()<ViewControllerBDelegate, UITextFieldDelegate>
 
 @end
 
 @implementation ViewControllerA
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,12 +30,22 @@
         self.nextButton.enabled = YES;
         self.textField.hidden = YES;
         self.tipLabel.text = @"Click NEXT button.";
+        
     } else if ([self.type isEqualToString:@"Passing Data UserDefaults"]) {
         self.panelView.hidden = NO;
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString *content = [userDefaults objectForKey:@"kPassingDataBetweenViewControllers"];
         self.userDefaulstLabel.text = content;
         self.singletonLabel.text = @"";
+        
+    } else if ([self.type isEqualToString:@"Passing Data Singleton"]) {
+        self.panelView.hidden = NO;
+        self.singletonLabel.text = [PassingDataManager sharedManager].content;
+        
+    } else if ([self.type isEqualToString:@"Passing Data Notification"])  {
+        self.nextButton.enabled = YES;
+        self.textField.hidden = YES;
+        self.tipLabel.text = @"Click NEXT button. Input something in next page, then they'll show here.";
     }
 }
 
@@ -58,13 +73,18 @@
 //        viewControllerB.block = ^(NSString *content) {
 //            weakSelf.tipLabel.text = content;
 //        };
+        
     } else if ([self.type isEqualToString:@"Passing Data UserDefaults"]) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults setObject:self.textField.text forKey:@"kPassingDataBetweenViewControllers"];
         [userDefaults synchronize];
+        
+    } else if ([self.type isEqualToString:@"Passing Data Singleton"]) {
+        [PassingDataManager sharedManager].content = self.textField.text;
+        
+    } else if ([self.type isEqualToString:@"Passing Data Notification"])  {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleData:) name:@"kPassingDataBetweenViewControllersNotification" object:nil];
     }
-    
-    
     
     [self.navigationController pushViewController:viewControllerB animated:YES];
 }
@@ -82,6 +102,14 @@
 #pragma mark - ViewControllerBDelegate
 
 - (void)viewController:(ViewControllerB *)controller didFinishEnteringItem:(NSString *)content {
+    self.tipLabel.text = content;
+}
+
+#pragma mark - Notification
+
+- (void)handleData:(NSNotification *)notification {
+    NSDictionary *info = notification.object;
+    NSString *content = [info valueForKey:@"content"];
     self.tipLabel.text = content;
 }
 

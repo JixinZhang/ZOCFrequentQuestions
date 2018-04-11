@@ -7,6 +7,7 @@
 //
 
 #import "ViewControllerB.h"
+#import "PassingDataManager.h"
 
 @interface ViewControllerB ()
 
@@ -27,7 +28,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *content = [userDefaults objectForKey:@"kPassingDataBetweenViewControllers"];
     self.userDefaultsLabel.text = content;
-    self.singletonLabel.text = @"";
+    self.singletonLabel.text = [PassingDataManager sharedManager].content;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,6 +45,9 @@
 //    if (self.block) {
 //        self.block(content);
 //    }
+    
+    NSDictionary *info = @{@"content" : content};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kPassingDataBetweenViewControllersNotification" object:info];
 }
 
 - (void)setTextFieldContent:(NSString *)textFieldContent {

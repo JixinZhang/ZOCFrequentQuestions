@@ -238,5 +238,91 @@ self.userDefaultsLabel.text = content;
 ```
 ### Singleton 单例
 
+Singleton 会阻止其他对象实例化其自己的 Singleton 对象的副本，从而确保所有对象都访问唯一实例。单例一旦被创建，在APP的整个生命周期内都不会被销毁(如果没有手动销毁的话)。所以单例可以用来存储数据。
+
+1) 创建一个基于NSObject的文件，`PassingDataManager`。在`.h`中添加需要存储数据的属性和一个类方法（用于向整个系统提供这个实例）。
+
+```
+@interface PassingDataManager : NSObject
+
+@property (nonatomic, copy) NSString *content;
+
++ (instancetype)sharedManager;
+
+@end
+```
+
+2) 在`.m`中
+
+```
++ (instancetype)sharedManager {
+    static PassingDataManager *manager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        manager = [[PassingDataManager alloc] init];
+    });
+    return manager;
+}
+
+```
+单例不能放在堆区（控制器A死了，里面创建的对象也死了），在任何需要的地方的都能拿到，因此放到静态区（静态区内部的对象只要一创建，它的声明周期就和app 一样）
+
+3) 在需要给其赋值的地方，需要`#import "PassingDataManager.h"`
+
+
+```
+[PassingDataManager sharedManager].content = @"This message come from Singleton";
+``` 
+
+4) 在需要取值的地方，需要`#import "PassingDataManager.h"`
+
+```
+self.singletonLabel.text = [PassingDataManager sharedManager].content;
+```
 
 ### NSNotification 通知
+
+使用通知可以在一处发送，多处接收。
+
+1) 在需要添加通知的地方(接收数据处)添加通知，并且添加处理通知的方法
+
+```
+[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleData:) name:@"kPassingDataBetweenViewControllersNotification" object:nil];
+
+#pragma mark - Notification
+
+- (void)handleData:(NSNotification *)notification {
+    NSDictionary *info = notification.object;
+    NSString *content = [info valueForKey:@"content"];
+    self.title = content;
+}
+
+```
+
+2) 在发送通知的地方(发送数据处)
+
+```
+NSDictionary *info = @{@"content" : @"Notification"};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kPassingDataBetweenViewControllersNotification" object:info];
+
+```
+
+3) 在需要添加通知的地方(接收数据处)，当对象销毁前需要将该对象注册的通知移除掉，否则，程序会crash。
+
+```
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+```
+
+## 5.总结
+
+页面见传递数据的方法有如下几点：
+
+1. 在alloc一个class之后初始化该class的属性；
+2. Delegate；
+3. Block；
+4. NSUserDefaults，此处可以延伸为数据持久化：plist, SQLite3, CoreData。
+5. Singleton;
+6. NSNotification

@@ -15,6 +15,7 @@
 		782600B8207CB65B00E953C0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 782600B7207CB65B00E953C0 /* main.m */; };
 		782600C0207CBF0A00E953C0 /* ViewControllerA.m in Sources */ = {isa = PBXBuildFile; fileRef = 782600BF207CBF0A00E953C0 /* ViewControllerA.m */; };
 		782600C3207CBFF500E953C0 /* ViewControllerB.m in Sources */ = {isa = PBXBuildFile; fileRef = 782600C2207CBFF500E953C0 /* ViewControllerB.m */; };
+		7884D2A4207E629D00A21E3A /* PassingDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7884D2A3207E629D00A21E3A /* PassingDataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		782600BF207CBF0A00E953C0 /* ViewControllerA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewControllerA.m; sourceTree = "<group>"; };
 		782600C1207CBFF500E953C0 /* ViewControllerB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerB.h; sourceTree = "<group>"; };
 		782600C2207CBFF500E953C0 /* ViewControllerB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewControllerB.m; sourceTree = "<group>"; };
+		7884D2A2207E629D00A21E3A /* PassingDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PassingDataManager.h; sourceTree = "<group>"; };
+		7884D2A3207E629D00A21E3A /* PassingDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PassingDataManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,8 @@
 				782600BF207CBF0A00E953C0 /* ViewControllerA.m */,
 				782600C1207CBFF500E953C0 /* ViewControllerB.h */,
 				782600C2207CBFF500E953C0 /* ViewControllerB.m */,
+				7884D2A2207E629D00A21E3A /* PassingDataManager.h */,
+				7884D2A3207E629D00A21E3A /* PassingDataManager.m */,
 			);
 			path = PassingDataForwar;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 				782600C0207CBF0A00E953C0 /* ViewControllerA.m in Sources */,
 				782600AD207CB65A00E953C0 /* ViewController.m in Sources */,
 				782600B8207CB65B00E953C0 /* main.m in Sources */,
+				7884D2A4207E629D00A21E3A /* PassingDataManager.m in Sources */,
 				782600AA207CB65A00E953C0 /* AppDelegate.m in Sources */,
 				782600C3207CBFF500E953C0 /* ViewControllerB.m in Sources */,
 			);
