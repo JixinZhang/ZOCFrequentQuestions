@@ -7,7 +7,12 @@
 原文链接[《Passing Data between View Controllers》](https://stackoverflow.com/questions/5210535/passing-data-between-view-controllers)
 
 关键词
-> Passing Data between View Controllers
+> Passing Data between View Controllers  
+> Delegate  
+> Block  
+> NSUserDefaults  
+> Singleton  
+> NSNotification  
 
 ## 1.向下一个页面传递数据
 **Passing Data Forward**
