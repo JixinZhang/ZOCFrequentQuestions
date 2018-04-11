@@ -14,6 +14,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *panelView;
+
+@property (weak, nonatomic) IBOutlet UILabel *userDefaulstLabel;
+@property (weak, nonatomic) IBOutlet UILabel *singletonLabel;
+
 @property (nonatomic, copy) NSString *titleString;
 @property (nonatomic, copy) NSString *type;
 

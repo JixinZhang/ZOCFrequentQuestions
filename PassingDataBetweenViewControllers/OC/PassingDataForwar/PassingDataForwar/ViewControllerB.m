@@ -13,6 +13,7 @@
 @end
 
 @implementation ViewControllerB
+@synthesize delegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,6 +23,11 @@
     self.backButton.hidden = self.hideBackButton;
     
     self.tipLabel.text = [NSString stringWithFormat:@"'%@' was come from previous page",self.textFieldContent];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *content = [userDefaults objectForKey:@"kPassingDataBetweenViewControllers"];
+    self.userDefaultsLabel.text = content;
+    self.singletonLabel.text = @"";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,7 +36,14 @@
 }
 
 - (IBAction)backButtonClicked:(id)sender {
+    NSString *content = self.textField.text;
+    if ([self.delegate respondsToSelector:@selector(viewController:didFinishEnteringItem:)]) {
+        [self.delegate viewController:self didFinishEnteringItem:content];
+    }
     
+//    if (self.block) {
+//        self.block(content);
+//    }
 }
 
 - (void)setTextFieldContent:(NSString *)textFieldContent {

@@ -9,7 +9,7 @@
 #import "ViewControllerA.h"
 #import "ViewControllerB.h"
 
-@interface ViewControllerA ()<UITextFieldDelegate>
+@interface ViewControllerA ()<ViewControllerBDelegate, UITextFieldDelegate>
 
 @end
 
@@ -20,13 +20,17 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.nextButton.enabled = NO;
     self.textField.delegate = self;
-    
+    self.panelView.hidden = YES;
     if ([self.type isEqualToString:@"Passing Data Back"]) {
         self.nextButton.enabled = YES;
         self.textField.hidden = YES;
         self.tipLabel.text = @"Click NEXT button.";
     } else if ([self.type isEqualToString:@"Passing Data UserDefaults"]) {
-        
+        self.panelView.hidden = NO;
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *content = [userDefaults objectForKey:@"kPassingDataBetweenViewControllers"];
+        self.userDefaulstLabel.text = content;
+        self.singletonLabel.text = @"";
     }
 }
 
@@ -48,9 +52,16 @@
         viewControllerB.hideTextField = YES;
         viewControllerB.hideBackButton = YES;
     }else if ([self.type isEqualToString:@"Passing Data Back"]) {
+        viewControllerB.delegate = self;
         
+//        __weak __typeof__ (self)weakSelf = self;
+//        viewControllerB.block = ^(NSString *content) {
+//            weakSelf.tipLabel.text = content;
+//        };
     } else if ([self.type isEqualToString:@"Passing Data UserDefaults"]) {
-        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:self.textField.text forKey:@"kPassingDataBetweenViewControllers"];
+        [userDefaults synchronize];
     }
     
     
@@ -66,6 +77,12 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     self.nextButton.enabled = textField.text.length;
+}
+
+#pragma mark - ViewControllerBDelegate
+
+- (void)viewController:(ViewControllerB *)controller didFinishEnteringItem:(NSString *)content {
+    self.tipLabel.text = content;
 }
 
 @end
