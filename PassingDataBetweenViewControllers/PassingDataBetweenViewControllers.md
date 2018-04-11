@@ -2,14 +2,14 @@
 >stackoverflow上关于Objective-C关注度比较高的问题系列
 >[链接](https://stackoverflow.com/questions/tagged/objective-c?sort=frequent&pageSize=15)
 
-#页面之间传递数据
+# 页面之间传递数据
 
 原文链接[《Passing Data between View Controllers》](https://stackoverflow.com/questions/5210535/passing-data-between-view-controllers)
 
 关键词
 > Passing Data between View Controllers
 
-##1.向下一个页面传递数据
+## 1.向下一个页面传递数据
 **Passing Data Forward**
 
 从页面A通过navitagion push进入页面B，此时需要传递数据（这个数据可以是object或者value）给页面B，可以用下面这个方法。
@@ -37,7 +37,7 @@ viewControllerB.title = @"The second View";
 
 ```
 
-##2.通过Segues进入下个页面的传递数据
+## 2.通过Segues进入下个页面的传递数据
 **Passing Data Forward using Segues**
 
 如果你使用了Storyboards，那么很大可能会用到segue来push页面。这里的数据传递和上面中的数据传递类似，在push页面之前下面这个方法会被调用
@@ -88,7 +88,7 @@ viewControllerB.title = @"The second View";
 
 ```
 
-##3.向上一个页面传递数据
+## 3.向上一个页面传递数据
 
 **Passing Data Back**
 
