@@ -4,4 +4,7 @@
    <FileRef
       location = "group:OC/PassingDataForwar/PassingDataForwar.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:OC/PassingDataForwar/../../Swift/PassingDataForwarSwift/PassingDataForwarSwift.xcodeproj">
+   </FileRef>
 </Workspace>
