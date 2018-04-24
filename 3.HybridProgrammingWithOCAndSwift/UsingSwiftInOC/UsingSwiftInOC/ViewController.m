@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "UsingSwiftInOC-Swift.h"
 
 @interface ViewController ()
 
@@ -16,7 +17,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    MySwiftObject *myOb = [[MySwiftObject alloc] init];
+    NSLog(@"MyOb.someProperty: %@", myOb.someProperty);
+    myOb.someProperty = @"Hello world";
+    NSLog(@"MyOb.someProperty: %@", myOb.someProperty);
+    NSString * retString = [myOb someFunctionWithSomeArg:@"Arg"];
+    NSLog(@"RetString: %@", retString);
 }
 
 

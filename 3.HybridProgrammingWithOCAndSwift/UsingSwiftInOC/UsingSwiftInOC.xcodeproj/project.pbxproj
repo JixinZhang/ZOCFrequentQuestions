@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78C5E1D4208F436300CCBB59 /* MySwiftObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C5E1D3208F436300CCBB59 /* MySwiftObject.swift */; };
 		78D8A01520887C18005C0CCF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D8A01420887C18005C0CCF /* AppDelegate.m */; };
 		78D8A01820887C18005C0CCF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D8A01720887C18005C0CCF /* ViewController.m */; };
 		78D8A01B20887C18005C0CCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78D8A01920887C18005C0CCF /* Main.storyboard */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		78C5E1D2208F436300CCBB59 /* UsingSwiftInOC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UsingSwiftInOC-Bridging-Header.h"; sourceTree = "<group>"; };
+		78C5E1D3208F436300CCBB59 /* MySwiftObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySwiftObject.swift; sourceTree = "<group>"; };
 		78D8A01020887C18005C0CCF /* UsingSwiftInOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UsingSwiftInOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78D8A01320887C18005C0CCF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		78D8A01420887C18005C0CCF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -58,6 +61,7 @@
 		78D8A01220887C18005C0CCF /* UsingSwiftInOC */ = {
 			isa = PBXGroup;
 			children = (
+				78C5E1D3208F436300CCBB59 /* MySwiftObject.swift */,
 				78D8A01320887C18005C0CCF /* AppDelegate.h */,
 				78D8A01420887C18005C0CCF /* AppDelegate.m */,
 				78D8A01620887C18005C0CCF /* ViewController.h */,
@@ -67,6 +71,7 @@
 				78D8A01E20887C19005C0CCF /* LaunchScreen.storyboard */,
 				78D8A02120887C19005C0CCF /* Info.plist */,
 				78D8A02220887C1A005C0CCF /* main.m */,
+				78C5E1D2208F436300CCBB59 /* UsingSwiftInOC-Bridging-Header.h */,
 			);
 			path = UsingSwiftInOC;
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 				TargetAttributes = {
 					78D8A00F20887C18005C0CCF = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -141,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78C5E1D4208F436300CCBB59 /* MySwiftObject.swift in Sources */,
 				78D8A01820887C18005C0CCF /* ViewController.m in Sources */,
 				78D8A02320887C1A005C0CCF /* main.m in Sources */,
 				78D8A01520887C18005C0CCF /* AppDelegate.m in Sources */,
@@ -283,6 +290,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4RTMSXL9KV;
 				INFOPLIST_FILE = UsingSwiftInOC/Info.plist;
@@ -292,6 +300,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Jixin.com.UsingSwiftInOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UsingSwiftInOC/UsingSwiftInOC-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -300,6 +311,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4RTMSXL9KV;
 				INFOPLIST_FILE = UsingSwiftInOC/Info.plist;
@@ -309,6 +321,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Jixin.com.UsingSwiftInOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UsingSwiftInOC/UsingSwiftInOC-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
